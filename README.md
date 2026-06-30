@@ -1,1 +1,1 @@
-# srinivashkchetan-github.io
+# srinivashkchetan.github.io
