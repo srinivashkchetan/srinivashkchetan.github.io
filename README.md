@@ -4,48 +4,46 @@ A single-page clickable prototype. Fabric photos are loaded at runtime from the
 `assets/fabrics/` folder, so you can change any fabric's cloth by replacing an
 image file in the repo (no code edits).
 
+Filenames are lowercase with no spaces — required for case-sensitive hosts like
+GitHub Pages.
+
 ## Structure
 
 ```
 index.html            the prototype (references the image folder below)
-assets/fabrics/       one photo per fabric (see table)
+assets/fabrics/       one photo per fabric, named <id>.jpg (see table)
 ```
 
 ## Fabric library
 
-Tops (12) and bottoms (8). Each fabric's `id` in `index.html` maps to a file in
-`assets/fabrics/`. Filenames keep spaces (referenced URL-encoded in the code).
+| Group  | Fabric              | File                    |
+|--------|---------------------|-------------------------|
+| Top    | Indigo Dabu         | `indigodabu.jpg`        |
+| Top    | Yellow Floral       | `yellowfloral.jpg`      |
+| Top    | Indigo Ikat         | `indigoikat.jpg`        |
+| Top    | Indigo Leaf Stripe  | `indigoleaf.jpg`        |
+| Top    | Indigo Buti         | `indigobuti.jpg`        |
+| Top    | Mural Print         | `mural.jpg`             |
+| Top    | Orange Buti         | `orangebuti.jpg`        |
+| Top    | Blue Floral Buti    | `bluebuti.jpg`          |
+| Top    | Pink Buti           | `pinkbuti.jpg`          |
+| Top    | Black Triangle Buti | `blacktriangle.jpg`     |
+| Top    | Turquoise Buti      | `turqbuti.jpg`          |
+| Top    | Yellow Marigold     | `marigold.jpg`          |
+| Bottom | Black Ikat          | `blackikat.jpg`         |
+| Bottom | Green Check         | `greencheck.jpg`        |
+| Bottom | Pink Check Lungi    | `pinkcheck.jpg`         |
+| Bottom | Mustard Ikat        | `mustardikat.jpg`       |
+| Bottom | Ivory Stripe        | `ivorystripe.jpg`       |
+| Bottom | Pink Windowpane     | `pinkwindow.jpg`        |
+| Bottom | Yellow Gingham      | `yellowgingham.jpg`     |
+| Bottom | Black Check         | `blackcheck.jpg`        |
 
-| Group  | Fabric              | File                          |
-|--------|---------------------|-------------------------------|
-| Top    | Indigo Dabu         | `Another indigo.jpeg`         |
-| Top    | Yellow Floral       | `Flower in yellow.jpeg`       |
-| Top    | Indigo Ikat         | `Indigo - 2.jpeg`             |
-| Top    | Indigo Leaf Stripe  | `Indigo with leaves.jpeg`     |
-| Top    | Indigo Buti         | `Indigo.jpeg`                 |
-| Top    | Mural Print         | `Mural.jpeg`                  |
-| Top    | Orange Buti         | `Orange.jpeg`                 |
-| Top    | Blue Floral Buti    | `Pattern.jpeg`                |
-| Top    | Pink Buti           | `Pink gawd.jpeg`              |
-| Top    | Black Triangle Buti | `Triangle on black.jpeg`      |
-| Top    | Turquoise Buti      | `Turq.jpeg`                   |
-| Top    | Yellow Marigold     | `Yellow with orng flwr.jpeg`  |
-| Bottom | Black Ikat          | `Black ikkat.jpeg`            |
-| Bottom | Green Check         | `Greensquares.jpeg`           |
-| Bottom | Pink Check Lungi    | `Red sq lungi.jpeg`           |
-| Bottom | Mustard Ikat        | `Sanyasi.jpeg`                |
-| Bottom | Ivory Stripe        | `White bands.jpeg`            |
-| Bottom | Pink Windowpane     | `White lungi pink square.jpeg`|
-| Bottom | Yellow Gingham      | `Yellow check.jpeg`           |
-| Bottom | Black Check         | `black chq.jpeg`              |
-
-- **To change a fabric's photo:** replace its file in `assets/fabrics/` (keep the
-  same filename). The images here are already cropped to the cloth and resized for web.
+- **To change a fabric's photo:** replace its `<id>.jpg` in `assets/fabrics/`
+  (keep the same filename). Images here are already cropped to the cloth and
+  resized for web.
 - **To add / rename / re-map a fabric:** edit the `FAB` catalog and the `PHOTOS`
   map near the top of the `<script>` in `index.html`.
-
-Each photo appears in three places automatically: the swatch tile, the garment
-preview, and the review screen.
 
 ## Run / host
 
