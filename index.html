@@ -259,6 +259,27 @@ const FAB = {
 const STITCH = {top:650, bottom:700, set:1300};
 const METERS = {top:2.0, bottom:1.5};
 
+const FAB_DIR='assets/fabrics/';
+// Each fabric's swatch photo is loaded from the assets/fabrics/ folder by fabric id.
+// To change a fabric's cloth, just replace assets/fabrics/<id>.jpg in the repo.
+// To fall back to the generated woven texture for a fabric, delete its line below.
+const PHOTOS={
+  poplin:   FAB_DIR+'poplin.jpg',
+  linen:    FAB_DIR+'linen.jpg',
+  oxford:   FAB_DIR+'oxford.jpg',
+  khadi:    FAB_DIR+'khadi.jpg',
+  chambray: FAB_DIR+'chambray.jpg',
+  silk:     FAB_DIR+'silk.jpg',
+  twill:    FAB_DIR+'twill.jpg',
+  linenb:   FAB_DIR+'linenb.jpg',
+  wool:     FAB_DIR+'wool.jpg',
+  cord:     FAB_DIR+'cord.jpg',
+  denim:    FAB_DIR+'denim.jpg',
+  gab:      FAB_DIR+'gab.jpg'
+};
+function imgOf(id){ return (typeof PHOTOS!=='undefined' && PHOTOS[id]) || ''; }
+function swatchBg(f){ const u=imgOf(f.id); return u ? ("#efe9dd url('"+u+"') center/contain no-repeat") : weaveBg(f.weave,f.tone); }
+
 function weaveBg(weave, tone){
   let p='';
   if(weave==='plain') p="repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 2px,transparent 2px 4px),repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 2px,transparent 2px 4px)";
@@ -292,18 +313,14 @@ function fabById(id){return [...FAB.top,...FAB.bottom].find(f=>f.id===id);}
 const LOOKS={
   top:[
     {id:'shirt',     nm:'Classic shirt', nt:'Collar, placket, cuffs'},
-    {id:'kurta',     nm:'Kurta',         nt:'Mandarin collar, side slits'},
     {id:'overshirt', nm:'Overshirt',     nt:'Boxy, worn open'},
   ],
   bottom:[
     {id:'trouser', nm:'Tailored trousers', nt:'Clean, structured leg'},
     {id:'palazzo', nm:'Palazzo',           nt:'Wide, flowing leg'},
-    {id:'salwar',  nm:'Salwar',            nt:'Pleated, tapered ankle'},
   ],
   set:[
     {id:'coord',         nm:'Co-ord set',       nt:'Matched top + wide trousers'},
-    {id:'salwarkameez',  nm:'Salwar kameez',    nt:'Kameez, salwar & dupatta'},
-    {id:'kurtaset',      nm:'Kurta set',        nt:'Kurta with straight pyjama'},
     {id:'shirttrouser',  nm:'Shirt & trousers', nt:'Coordinated formal pair'},
   ]
 };
@@ -314,7 +331,8 @@ function modeOf(id){
   return 'set';
 }
 
-function pat(id,tone,weave){
+function pat(id,tone,weave,img){
+  if(img){ return '<pattern id="'+id+'" width="200" height="240" patternUnits="userSpaceOnUse">'+'<rect width="200" height="240" fill="'+tone+'"/><image href="'+img+'" x="0" y="0" width="200" height="240" preserveAspectRatio="xMidYMid meet"/></pattern>'; }
   let l='';
   if(weave==='plain') l='<path d="M0 4 H8 M4 0 V8" stroke="rgba(0,0,0,.08)" stroke-width="1"/>';
   else if(weave==='twill') l='<path d="M-2 6 L6 -2 M2 10 L10 2" stroke="rgba(0,0,0,.11)" stroke-width="1.4"/>';
@@ -408,7 +426,9 @@ function garmentSVG(drawType, neutral){
     topF=ft||fb||{tone:'#cfd8df',weave:'plain'};
     botF=fb||ft||{tone:'#bda886',weave:'twill'};
   }
-  const defs='<defs>'+pat('pT',topF.tone,topF.weave)+pat('pB',botF.tone,botF.weave)+'</defs>';
+  const topImg=(!neutral&&topF.id)?imgOf(topF.id):'';
+  const botImg=(!neutral&&botF.id)?imgOf(botF.id):'';
+  const defs='<defs>'+pat('pT',topF.tone,topF.weave,topImg)+pat('pB',botF.tone,botF.weave,botImg)+'</defs>';
   return '<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'+defs+(DRAW[drawType]||DRAW.shirt)()+'</svg>';
 }
 function styleProgress(){
@@ -474,7 +494,7 @@ function scGarment(){
 function fabGrid(kind){
   return FAB[kind].map(f=>`
     <button class="swatch ${S.fabric[kind]===f.id?'on':''}" onclick="pickFab('${kind}','${f.id}')">
-      <div class="cloth" style="background:${weaveBg(f.weave,f.tone)}"><div class="chk">✓</div></div>
+      <div class="cloth" style="background:${swatchBg(f)}"><div class="chk">✓</div></div>
       <div class="info"><div class="nm">${f.nm}</div><div class="nt">${f.nt}</div><div class="pr">₹${f.pr}/m</div></div>
     </button>`).join('');
 }
@@ -506,7 +526,7 @@ function scFabric(){
 function scLook(){
   const ft=S.fabric.top?fabById(S.fabric.top):null;
   const fb=S.fabric.bottom?fabById(S.fabric.bottom):null;
-  const fabLine=(label,f)=>`<div class="fabline"><div class="dot" style="background:${weaveBg(f.weave,f.tone)}"></div>
+  const fabLine=(label,f)=>`<div class="fabline"><div class="dot" style="background:${swatchBg(f)}"></div>
       <div><div class="ft">${f.nm}</div><div class="fs">${label} · ₹${f.pr}/m</div></div></div>`;
   let side;
   if(S.mode==='set'){ side=fabLine('Top',ft)+fabLine('Bottom',fb); }
@@ -536,7 +556,6 @@ function chipRow(label, hint, key, opts){
 function scStyle(){
   let cols='';
   const topCol = `<div class="stylecol"><div class="colttl">Your top</div>
-      ${chipRow('Fit','how close to the body','fit',['Slim','Regular','Relaxed'])}
       ${chipRow('Collar','','collar',['Classic','Button-down','Cutaway','Mandarin'])}
       ${chipRow('Sleeve','','sleeve',['Full','Half'])}</div>`;
   const botCol = `<div class="stylecol"><div class="colttl">Your bottom</div>
@@ -546,8 +565,8 @@ function scStyle(){
   if(S.mode==='top') cols=topCol;
   else if(S.mode==='bottom') cols=botCol;
   else cols=topCol+botCol;
-  // readiness: at least fit chosen
-  const ready = S.style.fit;
+  // defaults are sensible — nothing is required to continue
+  const ready = true;
   return `<div class="fadein">
     <div class="eyebrow">Step four</div>
     <h2>Tailor the details</h2>
@@ -634,7 +653,7 @@ function pieceRows(){
     const f=fabById(S.fabric[k]); if(!f) return;
     fabCost += f.pr*METERS[k];
     rows+=`<div class="rrow"><div class="rk">${kind}</div><div class="rv rmini">
-        <div class="sw" style="background:${weaveBg(f.weave,f.tone)}"></div>
+        <div class="sw" style="background:${swatchBg(f)}"></div>
         <div><b>${f.nm}</b> · ${rupee(f.pr)}/m</div></div></div>`;
   };
   if(S.mode==='set'){ showFab('Top fabric','top'); showFab('Bottom fabric','bottom'); }
