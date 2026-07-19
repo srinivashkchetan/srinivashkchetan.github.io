@@ -1,49 +1,55 @@
 # Atelier — made-to-measure prototype
 
-A single-page clickable prototype. Fabric photos are **not** embedded in the HTML —
-they are loaded at runtime from the `assets/fabrics/` folder, so you can change any
-fabric's cloth by just replacing an image file in the repo (no code edits).
+A single-page clickable prototype. Fabric photos are loaded at runtime from the
+`assets/fabrics/` folder, so you can change any fabric's cloth by replacing an
+image file in the repo (no code edits).
 
 ## Structure
 
 ```
-index.html                 the prototype (references the image folder below)
-assets/
-  fabrics/
-    poplin.jpg   linen.jpg   oxford.jpg   khadi.jpg   chambray.jpg  silk.jpg   ← tops
-    twill.jpg    linenb.jpg  wool.jpg     cord.jpg    denim.jpg     gab.jpg    ← bottoms
+index.html            the prototype (references the image folder below)
+assets/fabrics/       one photo per fabric (see table)
 ```
 
-## How the images are picked up
+## Fabric library
 
-`index.html` maps each fabric id to `assets/fabrics/<id>.jpg`:
+Tops (12) and bottoms (8). Each fabric's `id` in `index.html` maps to a file in
+`assets/fabrics/`. Filenames keep spaces (referenced URL-encoded in the code).
 
-| Fabric (shown in app) | id / file          |
-|-----------------------|--------------------|
-| Cotton Poplin         | `poplin.jpg`       |
-| Pure Linen            | `linen.jpg`        |
-| Oxford                | `oxford.jpg`       |
-| Handspun Khadi        | `khadi.jpg`        |
-| Chambray              | `chambray.jpg`     |
-| Silk Blend            | `silk.jpg`         |
-| Cotton Twill          | `twill.jpg`        |
-| Linen Blend           | `linenb.jpg`       |
-| Wool Blend            | `wool.jpg`         |
-| Fine Corduroy         | `cord.jpg`         |
-| Raw Denim             | `denim.jpg`        |
-| Gabardine             | `gab.jpg`          |
+| Group  | Fabric              | File                          |
+|--------|---------------------|-------------------------------|
+| Top    | Indigo Dabu         | `Another indigo.jpeg`         |
+| Top    | Yellow Floral       | `Flower in yellow.jpeg`       |
+| Top    | Indigo Ikat         | `Indigo - 2.jpeg`             |
+| Top    | Indigo Leaf Stripe  | `Indigo with leaves.jpeg`     |
+| Top    | Indigo Buti         | `Indigo.jpeg`                 |
+| Top    | Mural Print         | `Mural.jpeg`                  |
+| Top    | Orange Buti         | `Orange.jpeg`                 |
+| Top    | Blue Floral Buti    | `Pattern.jpeg`                |
+| Top    | Pink Buti           | `Pink gawd.jpeg`              |
+| Top    | Black Triangle Buti | `Triangle on black.jpeg`      |
+| Top    | Turquoise Buti      | `Turq.jpeg`                   |
+| Top    | Yellow Marigold     | `Yellow with orng flwr.jpeg`  |
+| Bottom | Black Ikat          | `Black ikkat.jpeg`            |
+| Bottom | Green Check         | `Greensquares.jpeg`           |
+| Bottom | Pink Check Lungi    | `Red sq lungi.jpeg`           |
+| Bottom | Mustard Ikat        | `Sanyasi.jpeg`                |
+| Bottom | Ivory Stripe        | `White bands.jpeg`            |
+| Bottom | Pink Windowpane     | `White lungi pink square.jpeg`|
+| Bottom | Yellow Gingham      | `Yellow check.jpeg`           |
+| Bottom | Black Check         | `black chq.jpeg`              |
 
-- **To change a fabric's photo:** replace `assets/fabrics/<id>.jpg` with your own image
-  (keep the same filename). Square-ish, well-lit close-ups of the cloth work best.
-- **To make a fabric use the generated woven texture instead of a photo:** delete that
-  fabric's line from the `PHOTOS = { ... }` map near the top of the `<script>` in `index.html`.
+- **To change a fabric's photo:** replace its file in `assets/fabrics/` (keep the
+  same filename). The images here are already cropped to the cloth and resized for web.
+- **To add / rename / re-map a fabric:** edit the `FAB` catalog and the `PHOTOS`
+  map near the top of the `<script>` in `index.html`.
 
-Each photo shows up in three places automatically: the swatch tile, the garment preview,
-and the review screen.
+Each photo appears in three places automatically: the swatch tile, the garment
+preview, and the review screen.
 
 ## Run / host
 
-- **Locally:** open `index.html` in a browser, or run `python3 -m http.server` in this
-  folder and visit http://localhost:8000.
-- **GitHub Pages:** in the repo, Settings → Pages → deploy from the `main` branch (root).
-  The site will be at `https://<username>.github.io/<repo>/`.
+- **Locally:** run `python3 -m http.server` in this folder, then open
+  http://localhost:8000.
+- **GitHub Pages:** repo Settings → Pages → deploy from `main` (root). Served at
+  `https://<username>.github.io/<repo>/`.

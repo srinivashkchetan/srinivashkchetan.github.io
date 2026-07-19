@@ -240,45 +240,57 @@
 /* ---------- data ---------- */
 const FAB = {
   top:[
-    {id:'poplin',  nm:'Cotton Poplin', nt:'Crisp, breathable — everyday shirts', pr:450,  tone:'#dfe6ec', weave:'plain'},
-    {id:'linen',   nm:'Pure Linen',    nt:'Light, textured, summer-ready',        pr:890,  tone:'#e7dfcd', weave:'slub'},
-    {id:'oxford',  nm:'Oxford',        nt:'Structured, smart-casual',             pr:560,  tone:'#cfd8df', weave:'basket'},
-    {id:'khadi',   nm:'Handspun Khadi',nt:'Artisanal, soft, sustainable',         pr:620,  tone:'#ece3cf', weave:'slub'},
-    {id:'chambray',nm:'Chambray',      nt:'Denim look, shirt weight',             pr:520,  tone:'#9fb2c4', weave:'plain'},
-    {id:'silk',    nm:'Silk Blend',    nt:'Sheen and drape for occasions',        pr:1250, tone:'#cdb7a0', weave:'satin'},
+    {id:'indigodabu', nm:'Indigo Dabu', nt:'Hand-block botanical motifs', pr:780, tone:'#5c5e5e', weave:'plain'},
+    {id:'yellowfloral', nm:'Yellow Floral', nt:'Summer florals on ochre', pr:620, tone:'#ac936b', weave:'plain'},
+    {id:'indigoikat', nm:'Indigo Ikat', nt:'Woven ikat, deep indigo', pr:950, tone:'#4b474d', weave:'plain'},
+    {id:'indigoleaf', nm:'Indigo Leaf Stripe', nt:'Leaf-vine stripes', pr:720, tone:'#584750', weave:'plain'},
+    {id:'indigobuti', nm:'Indigo Buti', nt:'Red buti on indigo', pr:680, tone:'#6a5e5d', weave:'plain'},
+    {id:'mural', nm:'Mural Print', nt:'Folk mural storytelling print', pr:890, tone:'#a1907e', weave:'plain'},
+    {id:'orangebuti', nm:'Orange Buti', nt:'Gold buti on rust', pr:650, tone:'#a46044', weave:'plain'},
+    {id:'bluebuti', nm:'Blue Floral Buti', nt:'Floral buti on blue', pr:660, tone:'#87817b', weave:'plain'},
+    {id:'pinkbuti', nm:'Pink Buti', nt:'White dots on pink', pr:590, tone:'#cb4d8c', weave:'plain'},
+    {id:'blacktriangle', nm:'Black Triangle Buti', nt:'Cream triangles on black', pr:640, tone:'#686154', weave:'plain'},
+    {id:'turqbuti', nm:'Turquoise Buti', nt:'White dots on turquoise', pr:610, tone:'#6cb09f', weave:'plain'},
+    {id:'marigold', nm:'Yellow Marigold', nt:'Marigold florals on yellow', pr:630, tone:'#b18e5f', weave:'plain'},
   ],
   bottom:[
-    {id:'twill',   nm:'Cotton Twill',  nt:'Chinos — durable, structured',         pr:520,  tone:'#bda886', weave:'twill'},
-    {id:'linenb',  nm:'Linen Blend',   nt:'Breezy trousers with drape',           pr:780,  tone:'#cabd9c', weave:'slub'},
-    {id:'wool',    nm:'Wool Blend',    nt:'Formal trousers, holds a crease',      pr:1450, tone:'#5b5f57', weave:'twill'},
-    {id:'cord',    nm:'Fine Corduroy', nt:'Texture, autumn weight',               pr:680,  tone:'#7d5a3c', weave:'cord'},
-    {id:'denim',   nm:'Raw Denim',     nt:'Indigo that ages with wear',           pr:740,  tone:'#2f4868', weave:'twill'},
-    {id:'gab',     nm:'Gabardine',     nt:'Sharp, water-resistant',               pr:820,  tone:'#3c4a44', weave:'twill'},
+    {id:'blackikat', nm:'Black Ikat', nt:'Monochrome woven ikat', pr:950, tone:'#473d2c', weave:'plain'},
+    {id:'greencheck', nm:'Green Check', nt:'Green & pink handloom check', pr:540, tone:'#88ada1', weave:'plain'},
+    {id:'pinkcheck', nm:'Pink Check Lungi', nt:'Fine pink cotton check', pr:480, tone:'#c19691', weave:'plain'},
+    {id:'mustardikat', nm:'Mustard Ikat', nt:'Ochre woven ikat', pr:900, tone:'#c07f1d', weave:'plain'},
+    {id:'ivorystripe', nm:'Ivory Stripe', nt:'Woven bands on ivory', pr:560, tone:'#a7a18e', weave:'plain'},
+    {id:'pinkwindow', nm:'Pink Windowpane', nt:'Pink windowpane check', pr:500, tone:'#aa9887', weave:'plain'},
+    {id:'yellowgingham', nm:'Yellow Gingham', nt:'Sunny gingham check', pr:520, tone:'#ad9256', weave:'plain'},
+    {id:'blackcheck', nm:'Black Check', nt:'Black & white handloom check', pr:530, tone:'#9b9589', weave:'plain'},
   ]
 };
 const STITCH = {top:650, bottom:700, set:1300};
 const METERS = {top:2.0, bottom:1.5};
 
-const FAB_DIR='assets/fabrics/';
-// Each fabric's swatch photo is loaded from the assets/fabrics/ folder by fabric id.
-// To change a fabric's cloth, just replace assets/fabrics/<id>.jpg in the repo.
-// To fall back to the generated woven texture for a fabric, delete its line below.
 const PHOTOS={
-  poplin:   FAB_DIR+'poplin.jpg',
-  linen:    FAB_DIR+'linen.jpg',
-  oxford:   FAB_DIR+'oxford.jpg',
-  khadi:    FAB_DIR+'khadi.jpg',
-  chambray: FAB_DIR+'chambray.jpg',
-  silk:     FAB_DIR+'silk.jpg',
-  twill:    FAB_DIR+'twill.jpg',
-  linenb:   FAB_DIR+'linenb.jpg',
-  wool:     FAB_DIR+'wool.jpg',
-  cord:     FAB_DIR+'cord.jpg',
-  denim:    FAB_DIR+'denim.jpg',
-  gab:      FAB_DIR+'gab.jpg'
+  indigodabu:'assets/fabrics/Another%20indigo.jpeg',
+  yellowfloral:'assets/fabrics/Flower%20in%20yellow.jpeg',
+  indigoikat:'assets/fabrics/Indigo%20-%202.jpeg',
+  indigoleaf:'assets/fabrics/Indigo%20with%20leaves.jpeg',
+  indigobuti:'assets/fabrics/Indigo.jpeg',
+  mural:'assets/fabrics/Mural.jpeg',
+  orangebuti:'assets/fabrics/Orange.jpeg',
+  bluebuti:'assets/fabrics/Pattern.jpeg',
+  pinkbuti:'assets/fabrics/Pink%20gawd.jpeg',
+  blacktriangle:'assets/fabrics/Triangle%20on%20black.jpeg',
+  turqbuti:'assets/fabrics/Turq.jpeg',
+  marigold:'assets/fabrics/Yellow%20with%20orng%20flwr.jpeg',
+  blackikat:'assets/fabrics/Black%20ikkat.jpeg',
+  greencheck:'assets/fabrics/Greensquares.jpeg',
+  pinkcheck:'assets/fabrics/Red%20sq%20lungi.jpeg',
+  mustardikat:'assets/fabrics/Sanyasi.jpeg',
+  ivorystripe:'assets/fabrics/White%20bands.jpeg',
+  pinkwindow:'assets/fabrics/White%20lungi%20pink%20square.jpeg',
+  yellowgingham:'assets/fabrics/Yellow%20check.jpeg',
+  blackcheck:'assets/fabrics/black%20chq.jpeg'
 };
 function imgOf(id){ return (typeof PHOTOS!=='undefined' && PHOTOS[id]) || ''; }
-function swatchBg(f){ const u=imgOf(f.id); return u ? ("#efe9dd url('"+u+"') center/contain no-repeat") : weaveBg(f.weave,f.tone); }
+function swatchBg(f){ const u=imgOf(f.id); return u ? ("#efe9dd url('"+u+"') center/cover no-repeat") : weaveBg(f.weave,f.tone); }
 
 function weaveBg(weave, tone){
   let p='';
@@ -332,7 +344,7 @@ function modeOf(id){
 }
 
 function pat(id,tone,weave,img){
-  if(img){ return '<pattern id="'+id+'" width="200" height="240" patternUnits="userSpaceOnUse">'+'<rect width="200" height="240" fill="'+tone+'"/><image href="'+img+'" x="0" y="0" width="200" height="240" preserveAspectRatio="xMidYMid meet"/></pattern>'; }
+  if(img){ return '<pattern id="'+id+'" width="200" height="240" patternUnits="userSpaceOnUse">'+'<rect width="200" height="240" fill="'+tone+'"/><image href="'+img+'" x="0" y="0" width="200" height="240" preserveAspectRatio="xMidYMid slice"/></pattern>'; }
   let l='';
   if(weave==='plain') l='<path d="M0 4 H8 M4 0 V8" stroke="rgba(0,0,0,.08)" stroke-width="1"/>';
   else if(weave==='twill') l='<path d="M-2 6 L6 -2 M2 10 L10 2" stroke="rgba(0,0,0,.11)" stroke-width="1.4"/>';
