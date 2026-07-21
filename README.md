@@ -1,53 +1,17 @@
-# Atelier — made-to-measure prototype
+# BeSpoke by The Indian Motif — clickable prototype
 
-A single-page clickable prototype. Fabric photos are loaded at runtime from the
-`assets/fabrics/` folder, so you can change any fabric's cloth by replacing an
-image file in the repo (no code edits).
+A single, self-contained clickable prototype (research build).
 
-Filenames are lowercase with no spaces — required for case-sensitive hosts like
-GitHub Pages.
+## Files
+- `index.html` — the whole prototype, including the logo (embedded). Nothing
+  else is required for it to render.
+- `.nojekyll` — tells GitHub Pages to serve files as-is.
 
-## Structure
+## Deploy on GitHub Pages
+1. Commit `index.html` (and `.nojekyll`) to your repo — repo root is simplest.
+2. Repo → Settings → Pages → Source: your branch, folder `/ (root)`.
+3. Open the published URL. The logo is baked into the page, so there is no
+   separate image file to misplace and nothing to 404.
 
-```
-index.html            the prototype (references the image folder below)
-assets/fabrics/       one photo per fabric, named <id>.jpg (see table)
-```
-
-## Fabric library
-
-| Group  | Fabric              | File                    |
-|--------|---------------------|-------------------------|
-| Top    | Indigo Dabu         | `indigodabu.jpg`        |
-| Top    | Yellow Floral       | `yellowfloral.jpg`      |
-| Top    | Indigo Ikat         | `indigoikat.jpg`        |
-| Top    | Indigo Leaf Stripe  | `indigoleaf.jpg`        |
-| Top    | Indigo Buti         | `indigobuti.jpg`        |
-| Top    | Mural Print         | `mural.jpg`             |
-| Top    | Orange Buti         | `orangebuti.jpg`        |
-| Top    | Blue Floral Buti    | `bluebuti.jpg`          |
-| Top    | Pink Buti           | `pinkbuti.jpg`          |
-| Top    | Black Triangle Buti | `blacktriangle.jpg`     |
-| Top    | Turquoise Buti      | `turqbuti.jpg`          |
-| Top    | Yellow Marigold     | `marigold.jpg`          |
-| Bottom | Black Ikat          | `blackikat.jpg`         |
-| Bottom | Green Check         | `greencheck.jpg`        |
-| Bottom | Pink Check Lungi    | `pinkcheck.jpg`         |
-| Bottom | Mustard Ikat        | `mustardikat.jpg`       |
-| Bottom | Ivory Stripe        | `ivorystripe.jpg`       |
-| Bottom | Pink Windowpane     | `pinkwindow.jpg`        |
-| Bottom | Yellow Gingham      | `yellowgingham.jpg`     |
-| Bottom | Black Check         | `blackcheck.jpg`        |
-
-- **To change a fabric's photo:** replace its `<id>.jpg` in `assets/fabrics/`
-  (keep the same filename). Images here are already cropped to the cloth and
-  resized for web.
-- **To add / rename / re-map a fabric:** edit the `FAB` catalog and the `PHOTOS`
-  map near the top of the `<script>` in `index.html`.
-
-## Run / host
-
-- **Locally:** run `python3 -m http.server` in this folder, then open
-  http://localhost:8000.
-- **GitHub Pages:** repo Settings → Pages → deploy from `main` (root). Served at
-  `https://<username>.github.io/<repo>/`.
+The logo is embedded as a data URL, so the page works identically when opened
+locally (double-click), served over HTTP, or hosted on GitHub Pages.
