@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Atelier — made-to-measure prototype</title>
+<title>BeSpoke by The Indian Motif</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -716,8 +716,8 @@ function scStyle(){
       <div class="fabchips">${fabs}</div>
       <a class="changelink" onclick="go('fabric')">Change fabric</a>
     </div>
-    ${cols}
     ${isSizes?sizeSection():''}
+    ${cols}
     <div class="actions">
       <button class="btn btn-ghost" onclick="go('fabric')">← Back</button>
       <button class="btn btn-primary" ${ready?'':'disabled'} onclick="go('${contTarget}')">${contLabel}</button>
